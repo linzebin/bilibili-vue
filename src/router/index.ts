@@ -6,6 +6,10 @@ import Space from "@/views/space.vue"
 
 export default [
     {
+        path: '/',
+        redirect: '/index'
+    },
+    {
         path: '/index',
         component: IndexNav,
         name: '主页',
