@@ -1,5 +1,7 @@
 <template>
-    <div class="p-live">live</div>
+    <div class="p-live">
+        live
+    </div>
 </template>
 
 <style lang="scss">

@@ -1,1 +1,14 @@
 $primary-color: #fb7299;
+
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+.f-clear::after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    clear: both;
+}

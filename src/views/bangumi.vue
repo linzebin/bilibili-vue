@@ -1,5 +1,7 @@
 <template>
-    <div class="p-bangumi">追番</div>
+    <div class="p-bangumi">
+        追番
+    </div>
 </template>
 
 

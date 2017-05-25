@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="page">
+    <div id="app" class="page fp-scroll">
         <router-view class="page-wrap"></router-view>
         <div class="tabbar">
             <router-link to="/index" class="tab-item" active-class="tab-item--active">
@@ -36,6 +36,54 @@
     </div>
 </template>
 
+
+<script lang="ts">
+import * as Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+
+@Component
+export default class App extends Vue {
+    mounted() {
+        var overscroll = function (el) {
+            el.addEventListener('touchstart', function () {
+                var top = el.scrollTop
+                var totalScroll = el.scrollHeight
+                var currentScroll = top + el.offsetHeight
+                //If we're at the top or the bottom of the containers
+                //scroll, push up or down one pixel.
+                //
+                //this prevents the scroll from "passing through" to
+                //the body.
+                if (top === 0) {
+                    el.scrollTop = 1
+                } else if (currentScroll === totalScroll) {
+                    el.scrollTop = top - 1
+                }
+            })
+            el.addEventListener('touchmove', function (evt) {
+                //if the content is actually scrollable, i.e. the content is long enough
+                //that scrolling can occur
+                // alert(el.offsetHeight+"," +el.scrollHeight)
+                if (el.offsetHeight < el.scrollHeight) {
+                    evt._isScroller = true
+                }
+                // this.offsetHeight = el.offsetHeight
+                // this.scrollHeight = el.scrollHeight
+                // console.log(el, el.offsetHeight, el.scrollHeight)
+            })
+        }
+        overscroll(document.querySelector('.fp-scroll'));
+        document.body.addEventListener('touchmove', function (evt) {
+            //In this case, the default behavior is scrolling the body, which
+            //would result in an overflow.  Since we don't want that, we preventDefault.
+            if (!evt['_isScroller']) {
+                evt.preventDefault()
+            }
+        })
+    }
+}
+</script>
+
 <style lang="scss">
 @import './styles/common.scss';
 @import './assets/font/iconfont.css';
@@ -56,19 +104,23 @@ html {
 body {
     margin: 0;
     font-family: Helvetica Neue, Helvetica, STHeiTi, Arial, sans-serif;
+    touch-action: none;
 }
 
 * {
     box-sizing: border-box;
 }
+
 .page {
     overflow: hidden;
     height: 100vh;
 }
+
 .page-wrap {
     overflow: auto;
     height: 100%;
 }
+
 .tabbar {
     position: fixed;
     left: 0;
@@ -89,7 +141,8 @@ body {
 
 .tab-item__icon {
     margin: 0 auto 5px;
-    font-size: 45px; /*px*/
+    font-size: 45px;
+    /*px*/
 }
 
 .tab-item--active .tab-item__icon {
@@ -97,7 +150,8 @@ body {
 }
 
 .tab-item__label {
-    font-size: 20px; /*px*/
+    font-size: 20px;
+    /*px*/
     line-height: 1;
 }
 </style>
