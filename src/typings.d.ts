@@ -3,4 +3,4 @@ declare module "*.vue" {
     export default typeof Vue
 }
 
-declare module "swipejs";
+declare module "swipejs"

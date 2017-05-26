@@ -6,10 +6,8 @@
             <a class="navitem" @click="toggleView('bangumi')">追番</a>
         </div>
 
-        <div class="page-content">
-            <keep-alive>
-                <component class="page-view" :is="currentView"></component>
-            </keep-alive>
+        <div class="page-content" is="UIScrollView">
+            <component class="page-view" :is="currentView"></component>
         </div>
     </div>
 </template>
@@ -18,12 +16,13 @@
 import * as Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 
-import Live from "@/views/live.vue"
-import Recommend from "@/views/recommend.vue"
-import Bangumi from "@/views/bangumi.vue"
+import Live from '@/views/live.vue'
+import Recommend from '@/views/recommend.vue'
+import Bangumi from '@/views/bangumi.vue'
+import { UIScrollView , UIPageView } from '@/components/UIScrollView'
 
 @Component({
-    components: { 'live': Live, 'recommend': Recommend, 'bangumi': Bangumi }
+    components: { 'live': Live, 'recommend': Recommend, 'bangumi': Bangumi,  UIScrollView , UIPageView }
 })
 export default class IndexNav extends Vue {
 
@@ -42,13 +41,14 @@ export default class IndexNav extends Vue {
     background-color: $primary-color;
     height: 130px;
     /*px*/
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     text-align: center;
     padding-top: 60px;
     /*px*/
+    z-index: 1;
 }
 
 .navlist {
@@ -76,11 +76,6 @@ export default class IndexNav extends Vue {
 }
 
 .page-view {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
+    // overflow: auto;
 }
 </style>

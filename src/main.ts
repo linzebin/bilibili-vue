@@ -22,7 +22,7 @@ const router = new VueRouter({
     base: process.env.NODE_ENV === JSON.parse(config.dev.env.NODE_ENV) ? config.dev.assetsPublicPath : config.build.assetsPublicPath,
     routes,
     scrollBehavior(to, from, savedPosition) {
-        // return { x: 0, y: 0 }
+        return { x: 0, y: 0 }
     }
 })
 router.beforeEach((to, from, next) => {

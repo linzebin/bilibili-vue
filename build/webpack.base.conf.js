@@ -53,7 +53,7 @@ module.exports = {
                 loader: 'vue-loader',
                 options: vueLoaderConfig
             },
-            { test: /\.html$/, loader: 'html-loader' },
+            { test: /\.html$/, use: 'html-loader' },
             { test: /\.mp4$/, loader: 'url-loader' },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
