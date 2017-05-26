@@ -2,7 +2,7 @@ var trim = function (string) {
     return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '');
 };
 
-var hasClass = function (el, cls) {
+var hasClass = function (el: HTMLElement, cls: string) {
     if (!el || !cls) return false;
     if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
     if (el.classList) {

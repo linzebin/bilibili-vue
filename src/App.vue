@@ -10,7 +10,7 @@
             </router-link>
             <router-link to="/apart" class="tab-item" active-class="tab-item--active">
                 <div class="tab-item__icon">
-                    <i class="iconfont icon-circle"></i>
+                    <i class="iconfont icon-fenquweixuanzhong"></i>
                 </div>
                 <div class="tab-item__label">分区</div>
             </router-link>
@@ -44,42 +44,42 @@ import { Component } from 'vue-property-decorator'
 @Component
 export default class App extends Vue {
     mounted() {
-        var overscroll = function (el) {
-            el.addEventListener('touchstart', function () {
-                var top = el.scrollTop
-                var totalScroll = el.scrollHeight
-                var currentScroll = top + el.offsetHeight
-                //If we're at the top or the bottom of the containers
-                //scroll, push up or down one pixel.
-                //
-                //this prevents the scroll from "passing through" to
-                //the body.
-                if (top === 0) {
-                    el.scrollTop = 1
-                } else if (currentScroll === totalScroll) {
-                    el.scrollTop = top - 1
-                }
-            })
-            el.addEventListener('touchmove', function (evt) {
-                //if the content is actually scrollable, i.e. the content is long enough
-                //that scrolling can occur
-                // alert(el.offsetHeight+"," +el.scrollHeight)
-                if (el.offsetHeight < el.scrollHeight) {
-                    evt._isScroller = true
-                }
-                // this.offsetHeight = el.offsetHeight
-                // this.scrollHeight = el.scrollHeight
-                // console.log(el, el.offsetHeight, el.scrollHeight)
-            })
-        }
-        overscroll(document.querySelector('.fp-scroll'));
-        document.body.addEventListener('touchmove', function (evt) {
-            //In this case, the default behavior is scrolling the body, which
-            //would result in an overflow.  Since we don't want that, we preventDefault.
-            if (!evt['_isScroller']) {
-                evt.preventDefault()
-            }
-        })
+        // var overscroll = function (el) {
+        //     el.addEventListener('touchstart', function () {
+        //         var top = el.scrollTop
+        //         var totalScroll = el.scrollHeight
+        //         var currentScroll = top + el.offsetHeight
+        //         //If we're at the top or the bottom of the containers
+        //         //scroll, push up or down one pixel.
+        //         //
+        //         //this prevents the scroll from "passing through" to
+        //         //the body.
+        //         if (top === 0) {
+        //             el.scrollTop = 1
+        //         } else if (currentScroll === totalScroll) {
+        //             el.scrollTop = top - 1
+        //         }
+        //     })
+        //     el.addEventListener('touchmove', function (evt) {
+        //         //if the content is actually scrollable, i.e. the content is long enough
+        //         //that scrolling can occur
+        //         // alert(el.offsetHeight+"," +el.scrollHeight)
+        //         if (el.offsetHeight < el.scrollHeight) {
+        //             evt._isScroller = true
+        //         }
+        //         // this.offsetHeight = el.offsetHeight
+        //         // this.scrollHeight = el.scrollHeight
+        //         // console.log(el, el.offsetHeight, el.scrollHeight)
+        //     })
+        // }
+        // overscroll(document.querySelector('.fp-scroll'));
+        // document.body.addEventListener('touchmove', function (evt) {
+        //     //In this case, the default behavior is scrolling the body, which
+        //     //would result in an overflow.  Since we don't want that, we preventDefault.
+        //     if (!evt['_isScroller']) {
+        //         evt.preventDefault()
+        //     }
+        // })
     }
 }
 </script>

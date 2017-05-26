@@ -1,4 +1,4 @@
-$primary-color: #fb7299;
+@import './variables.scss';
 
 .f-left {
     float: left;
@@ -6,7 +6,7 @@ $primary-color: #fb7299;
 .f-right {
     float: right;
 }
-.f-clear::after {
+.f-clearfix::after {
     content: "";
     display: block;
     visibility: hidden;

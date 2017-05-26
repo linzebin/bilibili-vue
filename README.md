@@ -37,7 +37,7 @@ npm run start
     - App.vue       # main app component
     - App.ts
     - components/   # ui components
-    - asserts/      # module asserts (processed by webpack)
+    - assets/       # module asserts (processed by webpack)
 - server/
     - index.ts      # server entry file
 - editorconfig      # editor config
@@ -65,3 +65,6 @@ npm run start
 
 ## TODO
 
+## Code Style
+ts - tslint
+css - BEM
